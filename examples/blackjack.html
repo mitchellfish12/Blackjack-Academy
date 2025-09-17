@@ -6,9 +6,12 @@
     <meta name="description" content="Blackjack">
     <meta name="viewport" content="width=device-width">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="blackjack-0.0.1.min.js"></script>
+    <script src="../dist/blackjack-0.0.2.min.js"></script>
 </head>
 <body>
+    <h1>Blackjack Demo</h1>
+    <button id="deal">Deal</button>
+    <div id="results"></div>
 
     <script type="text/javascript">
         
@@ -29,9 +32,19 @@
                 var playerCards = game.getPlayer().getCards();          
                 
                 var standStats = Blackjack.Probability.stand(shoe, dealerCards, playerCards, 3);
-                var hitStats = Blackjack.Probability.hit(shoe, dealerCards, playerCards, hitMaxPullCount);
+                var hitStats = Blackjack.Probability.hit(shoe, dealerCards, playerCards, 3);
                 var doubleStats = Blackjack.Probability.double(shoe, dealerCards, playerCards, 3);
+                var splitStats = Blackjack.Probability.split(shoe, dealerCards, playerCards, 3);
 
+                $("#results").html(`
+                    <p><strong>Dealer Cards:</strong> ${JSON.stringify(dealerCards)}</p>
+                    <p><strong>Player Cards:</strong> ${JSON.stringify(playerCards)}</p>
+                    <p><strong>Stand Probabilities:</strong> ${JSON.stringify(standStats)}</p>
+                    <p><strong>Hit Probabilities:</strong> ${JSON.stringify(hitStats)}</p>
+                    <p><strong>Double Probabilities:</strong> ${JSON.stringify(doubleStats)}</p>
+                    <p><strong>Split Probabilities:</strong> ${JSON.stringify(splitStats)}</p>
+        
+                `)
             });
         });
 

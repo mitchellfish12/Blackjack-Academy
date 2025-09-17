@@ -236,6 +236,22 @@ Blackjack.Probability = (function() {
         return stats;
     };
 
+    /**
+     * Calculate the win/loss/push probabilities of the player splitting their hand.
+     *
+     * @param {Array} shoe
+     * @param {Object} dealerCards
+     * @param {Object} playerCards
+     * @param {Integer} maxPullCount
+     * @param {Integer} pullCount
+     * @param {Integer} startIndex
+     * @return {Object} stats
+     */
+    var split = function(shoe, dealerCards, playerCards, maxPullCount, pullCount, startIndex) {
+        var stats = init();
+        return stats;
+    };
+
     return {
         stand: function(shoe, dealerCards, playerCards, maxPullCount) {
             return stand(shoe, dealerCards, playerCards, maxPullCount, 0, 0);
@@ -247,6 +263,10 @@ Blackjack.Probability = (function() {
 
         double: function(shoe, dealerCards, playerCards, maxPullCount) {
             return double(shoe, dealerCards, playerCards, maxPullCount, 0, 0);
+        },
+
+        split: function(shoe, dealerCards, playerCards, maxPullCount) {
+            return split(shoe, dealerCards, playerCards, maxPullCount, 0, 0);
         }
     };
 }());
